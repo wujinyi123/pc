@@ -9,13 +9,15 @@
       </el-aside>
       <el-main>
         <TagList />
-        <router-view v-slot="{ Component }">
-          <transition name="fade">
-            <keep-alive :max="10">
-              <component :is="Component"></component>
-            </keep-alive>
-          </transition>
-        </router-view>
+        <div style="background-color: white;padding: 18px">
+          <router-view v-slot="{ Component }">
+            <transition name="fade">
+              <keep-alive :max="10">
+                <component :is="Component"></component>
+              </keep-alive>
+            </transition>
+          </router-view>
+        </div>
       </el-main>
     </el-container>
   </el-container>

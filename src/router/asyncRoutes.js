@@ -1,5 +1,7 @@
 
 import NotFound from '~/pages/NotFound.vue'
+import Role from '~/pages/Role.vue'
+import Menu from '~/pages/Menu.vue'
 
 export default [
     {
@@ -48,6 +50,22 @@ export default [
         component: NotFound,
         meta: {
             title: "测试6"
+        }
+    },
+    {
+        path: "/role",
+        name: "/role",
+        component: Role,
+        meta: {
+            title: "角色管理"
+        }
+    },
+    {
+        path: "/menu",
+        name: "/menu",
+        component: Menu,
+        meta: {
+            title: "菜单管理"
         }
     }
 ]

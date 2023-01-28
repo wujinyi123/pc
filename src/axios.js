@@ -24,10 +24,12 @@ const respInterceptors = response => {
 
 const respError = error => {
     // 对响应错误做点什么
-    if (error.response.status === 400) {
+    if (error.response.status === 401) {
         store.dispatch("logout").finally(() => location.reload())
+        toast("未登录或登录已过期", "error")
+    } else {
+        toast(error.response.data.message || "请求失败", "error")
     }
-    toast(error.response.data.message || "请求失败", "error")
     return Promise.reject(error);
 }
 
