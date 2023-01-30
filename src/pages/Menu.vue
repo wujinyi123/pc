@@ -39,7 +39,6 @@
 import CommonDrawer from '~/components/CommonDrawer.vue'
 import { onMounted } from 'vue'
 import {
-  defaultProps,
   menuData,
   renderContent,
   initData,

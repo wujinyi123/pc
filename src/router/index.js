@@ -63,13 +63,23 @@ export const addRoutes = menuRoutes => {
         router.addRoute("admin", indexRoute)
     }
     // 添加动态路由
-    asyncRoutes.forEach(item => {
-        const routeObj = menuRoutes.find(obj => obj.route === item.path)
+    asyncRoutes.forEach(data => {
+        const item = { ...data }
+        let routeObj = menuRoutes.find(obj => obj.route === item.path)
         if (routeObj && !router.hasRoute(item.path)) {
             item.meta = {
                 title: routeObj.name
             }
             router.addRoute("admin", item)
+        } else if (item.fromPath) {
+            if (item.fromPath instanceof Array) {
+                routeObj = menuRoutes.find(obj => item.fromPath.indexOf(obj.route) > -1)
+            } else {
+                routeObj = menuRoutes.find(obj => obj.route === item.fromPath)
+            }
+            if (routeObj && !router.hasRoute(item.path)) {
+                router.addRoute("admin", item)
+            }
         }
     })
     return true

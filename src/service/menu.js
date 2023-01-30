@@ -2,12 +2,7 @@ import { ref, reactive } from 'vue'
 import { showModal, toast } from "~/composables/util"
 import { getMenuInfo, insertMenu, updateMenu, deleteMenu } from '~/api/menu'
 
-export const defaultProps = {
-    children: 'children',
-    label: 'name',
-}
 export const menuData = reactive({ tree: [], folders: [] })
-
 export const renderContent = (h, { node, data, store }) => {
     return h(
         'span',
