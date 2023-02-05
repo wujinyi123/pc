@@ -34,7 +34,7 @@ const respError = error => {
 }
 
 export const common = axios.create({
-    baseURL: "/api/common"
+    baseURL: "/api/app-common"
 })
 // 添加请求拦截器
 common.interceptors.request.use(reqInterceptors, reqError)
@@ -42,9 +42,17 @@ common.interceptors.request.use(reqInterceptors, reqError)
 common.interceptors.response.use(respInterceptors, respError)
 
 export const file = axios.create({
-    baseURL: "/api/file"
+    baseURL: "/api/app-file"
 })
 // 添加请求拦截器
 file.interceptors.request.use(reqInterceptors, reqError)
 // 添加响应拦截器
 file.interceptors.response.use(respInterceptors, respError)
+
+export const xiumei = axios.create({
+    baseURL: "/api/app-xiumei"
+})
+// 添加请求拦截器
+xiumei.interceptors.request.use(reqInterceptors, reqError)
+// 添加响应拦截器
+xiumei.interceptors.response.use(respInterceptors, respError)

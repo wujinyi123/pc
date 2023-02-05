@@ -14,15 +14,10 @@ export default defineConfig({
 
   server: {
     proxy: {
-      '/api/common': {
-        target: 'http://localhost:9100',
+      '/api': {
+        target: 'http://localhost:9000',
         changeOrigin: true,
-        rewrite: path => path.replace(/^\/api\/common/, '')
-      },
-      '/api/file': {
-        target: 'http://localhost:9200',
-        changeOrigin: true,
-        rewrite: path => path.replace(/^\/api\/file/, '')
+        rewrite: path => path.replace(/^\/api/, '')
       }
     }
   },
