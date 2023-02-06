@@ -3,6 +3,8 @@ import { toast } from '~/composables/util'
 import { getToken } from '~/composables/auth'
 import store from "./store"
 
+const programmer = import.meta.env.VITE_PROGRAMMER || ''
+
 const reqInterceptors = config => {
     // 往header头自动添加token
     const token = getToken()
@@ -34,7 +36,7 @@ const respError = error => {
 }
 
 export const common = axios.create({
-    baseURL: "/api/app-common"
+    baseURL: `/api/${programmer}app-common`
 })
 // 添加请求拦截器
 common.interceptors.request.use(reqInterceptors, reqError)
@@ -42,7 +44,7 @@ common.interceptors.request.use(reqInterceptors, reqError)
 common.interceptors.response.use(respInterceptors, respError)
 
 export const file = axios.create({
-    baseURL: "/api/app-file"
+    baseURL: `/api/${programmer}app-file`
 })
 // 添加请求拦截器
 file.interceptors.request.use(reqInterceptors, reqError)
@@ -50,7 +52,7 @@ file.interceptors.request.use(reqInterceptors, reqError)
 file.interceptors.response.use(respInterceptors, respError)
 
 export const xiumei = axios.create({
-    baseURL: "/api/app-xiumei"
+    baseURL: `/api/${programmer}app-xiumei`
 })
 // 添加请求拦截器
 xiumei.interceptors.request.use(reqInterceptors, reqError)
